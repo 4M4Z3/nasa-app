@@ -161,7 +161,7 @@ let three_objs = new Map();
     I created a map so you can quickly access all 3d models effectively
 
     three_objs.get("basketball") accesses the basketball 3d model for example:
-    three_objs.get("basketball")scale.set(3,3,3);
+    three_objs.get("basketball").scale.set(3,3,3);
 
     BTW: a map is essentially the same thing as a Python dictionary. They
     are very fast, and operate via key-value pairs. In this case, we are mapping
