@@ -419,7 +419,7 @@ function animateSpaceShuttle() {
             // shuttle.rotation.x = Math.PI / 6;
             shuttle.rotation.y = spaceShuttleTime + Math.PI / 2;
 
-            spaceShuttleTime += 0.05;
+            spaceShuttleTime += 0.01;
         }
     }
 }
