@@ -161,7 +161,7 @@ let three_objs = new Map();
     I created a map so you can quickly access all 3d models effectively
 
     three_objs.get("basketball") accesses the basketball 3d model for example:
-    three_objs.get("basketball").scale.set(3,3,3);
+    three_objs.get("basketball")scale.set(3,3,3);
 
     BTW: a map is essentially the same thing as a Python dictionary. They
     are very fast, and operate via key-value pairs. In this case, we are mapping
@@ -258,7 +258,7 @@ function addStars() {
         icosahedron.scale.set(0.2, 0.2, 0.2);
         icosahedron.position.set((Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100);
         
-        // Optionally add each star to a the starArray
+        // Optionally add each star to the starArray
         // If we want to manipulate a lot of objects, we can loop through this array and manipulate
         // the individual objects. See what we do in the animate() function
         starArray.push(icosahedron);
@@ -266,18 +266,16 @@ function addStars() {
 }
 addStars();
 /*
-
     Notice how we are reusing common variable names like geometry, material, etc.
     We can do this because these variables are scoped inside of functions.
     If you do this, just remember to declare the 3d model itself outside of
     the function if you want to access it later.
-
 */
 
 
 
 
-// Rotate the stars. We're currently calling this every frame the animate() function
+// Rotate the stars. We're currently calling this every frame via the animate() function
 function rotateStars(){
     for (let i=0; i<starArray.length; i++){
         starArray[i].rotation.x += 0.1;
@@ -348,7 +346,6 @@ function toggleImportedOpacity(){
     }
 
     three_objs.forEach(obj => {
-        // Traverse the entire object to find meshes with materials
         obj.traverse(child => {
             if (child.isMesh && child.material) {
                 child.material.opacity = opacity;
@@ -357,6 +354,8 @@ function toggleImportedOpacity(){
         });
     });
 }
+
+
 
 
 /*
@@ -372,7 +371,7 @@ function toggleImportedOpacity(){
     We also have a "transformed" boolean that we set to false
     just to make sure we only run this function once.
 
-    Although this may be bad practice, we are calling this
+    Although this ~may~ be bad practice, we are calling this
     function every frame in animate()
 */
 
@@ -401,7 +400,12 @@ function transformThreeObjs(){
 
 
 
-// Example of a cool animation using an imported 3d object, trig functions
+
+/* 
+    Example of a cool animation using an imported 3d object, trig functions
+    We use trig functions so the spaceshuttle will orbit the cube
+    https://en.m.wikipedia.org/wiki/File:Circle_cos_sin.gif
+*/
 let spaceShuttleTime = 0;
 let orbitRadius = 5;
 function animateSpaceShuttle() {
@@ -443,9 +447,11 @@ animate();
 
 
 
-// Window Resize Boilerplate
-// This ensures that we do not get any weird distortions if we
-// adjust the window size.
+/*
+    Window Resize Boilerplate
+    This ensures that we do not get any weird distortions if we
+    adjust the window size.
+*/
 window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
     const width = canvas.clientWidth;
